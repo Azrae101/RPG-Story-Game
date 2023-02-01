@@ -1,20 +1,28 @@
-# Selve spillet og game-loopet foregår her
-
+# Lobby #
 import random
-import time
-import pygame as pg
-import tkinter as tk
 
-from design import Design
+### look
+# Definitioner af variabler:
+room = 1
+leaflet = False
+location = 0
+inv = []
 
-root = tk.Tk()
-w = root.winfo_height
-root.geometry("400x400+500+400")
+# Inputs
+while True: # while is running:
+    user_input = input(" ")
 
-lab1 = tk.Label(root,
-    text = "Mariehøne",
-    font = "Arial 30")
+    if user_input == "look":
+        if room == 1: # lobby
+            # Location: middle [0]
+            if location == 0 and leaflet != True or leaflet in inv:
+                print("The Lobby")
+                print("You are standing in a lobby, there is a leaflet on the coffee table.")
+                print("There is a door in the south direction.")
+            elif location == 0:
+                print("The Lobby")
+                print("You are standing in a lobby.")
+                print("There is a door in the south direction.")
+    else:
+        print("I beg your pardon?")
 
-lab1.pack()
-
-root.mainloop()
