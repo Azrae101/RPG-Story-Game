@@ -3,6 +3,8 @@ import random
 
 # Tasks:
 # lower or higher case commands.
+# leaflet in inv
+# other commands
 
 ### Definitions:
 room = 1
@@ -113,7 +115,7 @@ while True: # while is running:
     # West:
     if user_input == "w" or user_input == "west":
         location = 4
-        print("You are standing in front of the secretary's door")
+        print("You are standing in front of the secretary's door.")
 
     # Quit
     elif user_input == "q" or user_input == "quit" or user_input == "exit" or user_input == "quit game" or user_input == "exit game":
