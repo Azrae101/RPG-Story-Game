@@ -9,6 +9,7 @@ import random
 ### Definitions:
 room = 1
 location = 0
+health = 100
 
 # Objects
 leaflet = False
@@ -20,6 +21,10 @@ secretary_door = False
 
 # Lists
 inv = []
+
+hello = ["Hi","Heyy","Hey","Hii","Hello","Ello","Hiya","Howdy","Nice to meet you"]
+bingchill_responses = ["冰淇淋","Bīngqílín","Ice-cream","Yummy","Guffe nam"]
+jump_responses = ["WEEEEEOOOO","Are you proud of yourself?","Don't jump too high","Are you that excited about playing Kroz?"]
 other_responses = ["Huh?","I beg your pardon?","What?","Come again?"]
 
 # Start
@@ -46,7 +51,8 @@ while True: # while is running:
     if user_input == "i" or user_input == "inv" or user_input == "inventory":
         if len(inv) > 0: # If there is something in the list
             print("You are carrying:")
-            print(inv)
+            for i in range (len(inv)):
+                print(inv[i])
         
         if len(inv) == 0: # If the list is empty
             print("You are not carrying anything")
@@ -118,9 +124,33 @@ while True: # while is running:
         print("You are standing in front of the secretary's door.")
 
     # Quit
-    elif user_input == "q" or user_input == "quit" or user_input == "exit" or user_input == "quit game" or user_input == "exit game":
+    if user_input == "q" or user_input == "quit" or user_input == "exit" or user_input == "quit game" or user_input == "exit game":
         exit()
-    
-    # Other responses # Closed 
-    # else:
+
+    # Leaflet 
+    if user_input == "take leaflet":
+        if location == 0 and 'leaflet' not in inv:
+            print("Taken.")
+            inv.append("leaflet")
+
+    # Other commands
+    if user_input == " ": # none
+        print(random.choice(other_responses))
+    if user_input == "diagnostic" or user_input == "health" or user_input == "hp" or user_input == "health power" or user_input == "status":
+        if health == 100:
+            print("Your health is perfect")
+        else:
+            print("Your health is: " + health + "/100")
+    if user_input == "jump": 
+        print(random.choice(jump_responses))
+    if user_input == "hi" or user_input == "hello" or user_input == "hii" or user_input == "ello" or user_input == "howdy" or user_input == "hey" or user_input == "heyy":
+        print(random.choice(hello))
+    if user_input == "heyyy" or user_input == "heyyyy" or user_input == "heyyyyy" or user_input == "heyyyyyy":
+        print("uhm, hi, are you okay?")
+    if user_input == "bing chilling":
+        print(random.choice(bingchill_responses))
+    if user_input == "damn" or user_input == "shit" or user_input == "frick" or user_input == "fuck":
+        print("Such language in a high-class establishment like this!")
+    #else:
     #    print(random.choice(other_responses))
+
