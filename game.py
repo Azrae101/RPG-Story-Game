@@ -33,12 +33,18 @@ while True: # while is running:
     
     user_input = input(" ")
 
-    # Inventory # PROBLEM HERE: keeps on printing even though user_input is not correct
+    # Hints
+    if room == 1 and door_handle == False and heating_coils == False and user_input == "h" or user_input == "H" or user_input == "hint":
+        print("Try to examine the door to the south")
+
+
+    # Inventory 
     if user_input == "i" or user_input == "inv" or user_input == "inventory":
-        print("You are carrying:")
-        print(inv)
+        if len(inv) > 0: # If there is something in the list
+            print("You are carrying:")
+            print(inv)
         
-        if not inv: 
+        if len(inv) == 0: # If the list is empty
             print("You are not carrying anything")
 
     # look
@@ -85,9 +91,9 @@ while True: # while is running:
                 print("You are standing in front of the secretary's door, it is open.")
 
     # Quit
-    elif user_input == "q" or "quit" or "exit" or "quit game" or "exit game":
-        print("hi")
+    elif user_input == "q" or user_input == "quit" or user_input ==  "exit" or user_input ==  "quit game" or user_input ==  "exit game":
+        exit()
     
     # Other responses
-    else:
+    elif user_input == "":
         print(random.choice(other_responses))
