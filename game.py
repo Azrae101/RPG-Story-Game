@@ -42,7 +42,7 @@ while True: # while is running:
             print(inv)
 
     # look
-    if user_input.lower == "look" or user_input.lower == "l":
+    if user_input == "look":
         if room == 1: # lobby
             # Location: middle [0]
             if location == 0 and leaflet == False or leaflet in inv:
@@ -83,6 +83,17 @@ while True: # while is running:
                 print("You are standing in front of the secretary's door, this is locked.")
             elif location == 4:
                 print("You are standing in front of the secretary's door, it is open.")
+
+    elif 
+    
+    
+    # Inventory # PROBLEM HERE: keeps on printing even though user_input is not correct
+    elif user_input == "i" or "inv" or "inventory":
+        if not inv: 
+            print("You are not carrying anything")
+        elif inv:
+            print("You are carrying:")
+            print(inv)
     
     # Quit
     elif user_input == "q" or user_input == "quit" or user_input == "exit" or user_input == "quit game" or user_input == "exit game":
