@@ -33,8 +33,16 @@ while True: # while is running:
     
     user_input = input(" ")
 
+    # Inventory # PROBLEM HERE: keeps on printing even though user_input is not correct
+    if user_input == "i" or user_input == "inv" or user_input == "inventory":
+        print("You are carrying:")
+        print(inv)
+        
+        if not inv: 
+            print("You are not carrying anything")
+
     # look
-    if user_input == "look":
+    if user_input == "look" or user_input == "Look" or user_input == "l":
         if room == 1: # lobby
             # Location: middle [0]
             if location == 0 and leaflet == False or leaflet in inv:
@@ -76,17 +84,6 @@ while True: # while is running:
             elif location == 4:
                 print("You are standing in front of the secretary's door, it is open.")
 
-    elif 
-    
-    
-    # Inventory # PROBLEM HERE: keeps on printing even though user_input is not correct
-    elif user_input == "i" or "inv" or "inventory":
-        if not inv: 
-            print("You are not carrying anything")
-        elif inv:
-            print("You are carrying:")
-            print(inv)
-    
     # Quit
     elif user_input == "q" or "quit" or "exit" or "quit game" or "exit game":
         print("hi")
