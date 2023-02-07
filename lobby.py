@@ -15,6 +15,7 @@ fire_extinguisher = False
 door_handle = False
 heating_coils = False
 secretary_door = False
+screwdriver = False
 
 # Lists
 inv = []
@@ -26,7 +27,7 @@ other_responses = ["Huh?","I beg your pardon?","What?","Come again?"]
 
 # Start
 print("KROZ: Escape the mystery mansion")
-print("Copyright (c) 2023, Escape room company, Inc. All rights reserved.")
+print("Copywrong (!) 2023, Escape room company, Inc. All rights reserved.")
 print("KROZ is a registered trademark of Escape room company, Inc.")
 print("Revision 1 / Serial number 000001")
 print(" ")
@@ -68,10 +69,10 @@ while True: # while is running:
                 print("There is a door in the south direction.")
 
             # North
-            elif location == 1 and book == False or book in inv:
+            elif location == 1 and book == False or book not in inv:
                 print("You are standing in front of a bookshelf.")
                 print("All the books are lined up perfectly except for one book in particular.")
-            elif location == 1: 
+            elif location == 1 and book in inv: 
                 print("You are standing in front of a bookshelf.")
                 print("All the books are lined up perfectly.")
 
@@ -132,6 +133,10 @@ while True: # while is running:
         if location == 0 and 'leaflet' not in inv:
             print("Taken.")
             inv.append("leaflet")
+        elif 'leaflet' not in inv:
+            print("You are not near any leaflet")
+        else:
+            print("You are already carrying a leaflet")
 
     if user_input == "read leaflet":
         leaflet_read = 1
@@ -164,12 +169,50 @@ while True: # while is running:
         else:
             print("You are not carrying a leaflet")
 
-    if user_input == "drop leaflet":
-        if 'leaflet' in inv:
+    if user_input == "drop leaflet" and 'leaflet' in inv:
             inv.remove("leaflet")
             print("Dropped.")
+    elif user_input == "drop leaflet" and 'leaflet' not in inv: 
+        print("You are not carrying a leaflet")
 
     ## Location == 1, North
+    if user_input == "examine bookshelf" or user_input == "look at bookshelf" or user_input == "bookshelf":
+        if location == 1:
+            print("A particular book sticks out")
+        else:
+            print("You are not near any bookshelf")
+    
+    if user_input == "take book" or user_input == "pick up book":
+        if location == 1 and 'book' not in inv:
+            print("Taken.")
+            inv.append("book")
+        elif 'book' not in inv:
+            print("You are not near any book")
+        elif 'book' in inv:
+            print("You are already carrying a book")
+    
+    if user_input == "pull the book out" and 'book' not in inv or user_input == "pull book out" and 'book' not in inv or user_input == "push bookshelf" or user_input == "kick bookshelf" or user_input == "hit bookshelf" or user_input == "punch bookshelf":
+        print("You were crushed by the bookshelf")
+        print("You died.")
+        exit()
+    elif user_input == "pull the book out" and 'book' in inv or user_input == "pull book out" and 'book' in inv:
+        print("You are already carrying the book")
+
+    if user_input == "examine book" or user_input == "look at book":
+        print("The book is called:”Fahrenheit 451” and contains a screwdriver.")
+    
+    if user_input == "open book" and book in inv or user_input == "read book" and book in inv:
+        print("The book contains a screwdriver.")
+    
+    # Screwdriver # Doesn't work yet
+    if user_input == "take screwdriver" or user_input == "pick up screwdriver":
+        if location == 1 and 'screwdriver' not in inv:
+            print("Taken.")
+            inv.append("screwdriver")
+        elif 'screwdriver' not in inv:
+            print("You are not near any screwdriver")
+        elif 'screwdriver' in inv:
+            print("You are already carrying a screwdriver")
 
     ## Location == 2, East 
 
@@ -184,9 +227,10 @@ while True: # while is running:
         if health == 100:
             print("Your health is perfect")
         else:
-            print("Your health is: " + health + "/100")
+            print("Your health is: " + str(health) + "/100")
     if user_input == "jump": 
         print(random.choice(jump_responses))
+        health -= 10
     if user_input == "hi" or user_input == "hello" or user_input == "hii" or user_input == "ello" or user_input == "howdy" or user_input == "hey" or user_input == "heyy":
         print(random.choice(hello))
     if user_input == "heyyy" or user_input == "heyyyy" or user_input == "heyyyyy" or user_input == "heyyyyyy":
@@ -195,6 +239,25 @@ while True: # while is running:
         print(random.choice(bingchill_responses))
     if user_input == "damn" or user_input == "shit" or user_input == "frick" or user_input == "fuck":
         print("Such language in a high-class establishment like this!")
-    #else:
-    #    print(random.choice(other_responses))
+    
+    # kill
+    if user_input == "kill":
+        print("What do you want to kill?")
+    if user_input == "kill mannequin":
+        # mannequin requirements
+        continue
+    if user_input == "kill self" or user_input == "kill myself":
+        print("What do you want to kill yourself with?")
+    if user_input == "kill self with book" or user_input == "kill myself with book" or user_input == "kill self with leaflet" or user_input == "kill myself with leaflet":
+        print("You cannot do that")
 
+    # Health
+    if health < 0:
+        print("Your health was too low")
+        print("You died.")
+        print(" ")
+        print("Hint: You can always check your health by typing 'health' or 'diagnostic'")
+        exit()
+
+#else:
+#    print(random.choice(other_responses))
