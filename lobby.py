@@ -1,9 +1,6 @@
 # Lobby #
 import random
 
-# Tasks:
-# lower-case commands. with .lower?
-
 ### Definitions:
 room = 1
 location = 0
@@ -11,6 +8,8 @@ health = 100
 
 # Objects
 leaflet = False
+leaflet_read = 0
+
 book = False
 fire_extinguisher = False
 door_handle = False
@@ -136,6 +135,42 @@ while True: # while is running:
         if location == 0 and 'leaflet' not in inv:
             print("Taken.")
             inv.append("leaflet")
+
+    if user_input == "read leaflet":
+        leaflet_read = 1
+        if 'leaflet' in inv:            
+            print("page 1 out of 2")
+            print("WELCOME TO KROZ!")
+            print("KROZ is a game of adventure, danger, and low cunning.")
+            print("In it you will explore some of the most amazing territory ever seen by mortals.")
+            print("No computer should be without one!")
+        else:
+            print("You are not carrying a leaflet")
+
+    if user_input == "turn to page 1" and leaflet_read == 1 or user_input == "read page 1"  and leaflet_read == 1 or user_input == "page 1"  and leaflet_read == 1 or user_input == "1" and leaflet_read == 1:
+        if 'leaflet' in inv:            
+            print("page 1 out of 2")
+            print("WELCOME TO KROZ!")
+            print("KROZ is a game of adventure, danger, and low cunning.")
+            print("In it you will explore some of the most amazing territory ever seen by mortals.")
+            print("No computer should be without one!")
+        else:
+            print("You are not carrying a leaflet")
+
+    if user_input == "turn to page 2"  and leaflet_read == 1 or user_input == "read page 2"  and leaflet_read == 1 or user_input == "page 2"  and leaflet_read == 1 or user_input == "2"  and leaflet_read == 1:
+        if 'leaflet' in inv:
+            print("page 2 out of 2")
+            print("You were promised a $10,000 prize, if able to escape an escape room called The Mystery Mansion.")
+            print("Each puzzle room subjects the player to different dangers.")
+            print("Some elements of the rooms reflect elements from the player's pasts, as the player survived a tragic event.")
+            print("The only way to escape is to solve the puzzles.")
+        else:
+            print("You are not carrying a leaflet")
+
+    if user_input == "drop leaflet":
+        if 'leaflet' in inv:
+            inv.remove("leaflet")
+            print("Dropped.")
 
     ## Location == 1, North
 
