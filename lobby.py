@@ -2,9 +2,7 @@
 import random
 
 # Tasks:
-# lower or higher case commands.
-# leaflet in inv
-# other commands
+# lower-case commands. with .lower?
 
 ### Definitions:
 room = 1
@@ -126,6 +124,8 @@ while True: # while is running:
     # Quit
     if user_input == "q" or user_input == "quit" or user_input == "exit" or user_input == "quit game" or user_input == "exit game":
         exit()
+
+    ### Objects:
 
     # Leaflet 
     if user_input == "take leaflet":
