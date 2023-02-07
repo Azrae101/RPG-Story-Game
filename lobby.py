@@ -16,6 +16,9 @@ fire_extinguisher = False
 door_handle = False
 heating_coils = False
 secretary_door = False
+ovendial = False
+window = 0
+key = 0
 
 # Lists
 inv = []
@@ -125,8 +128,6 @@ while True: # while is running:
     if user_input == "q" or user_input == "quit" or user_input == "exit" or user_input == "quit game" or user_input == "exit game":
         exit()
 
-
-
     ### Objects:
 
     ## Location == 0, Middle: 
@@ -139,8 +140,82 @@ while True: # while is running:
     ## Location == 1, North
 
     ## Location == 2, East 
+    if location == 2:
+        # Window
+        if user_input == "Break window" or user_input == "Hit window" or user_input == "break window" and window == 0:
+            print("You broke the window")
+            window += 1
+        elif user_input == "Break window" or user_input == "Hit window" or user_input == "break window" and window == 1:
+            print("The window is already broken")
+        
+        if user_input == "Examine window" or user_input == "examine window" and window == 0:
+            print("Here is a window")
+        elif user_input == "Examine window" or user_input == "examine window" and window == 1:
+            print("This window is broken")
+        
+        if user_input == "Escape through window" or user_input == "go through window" and window == 0:
+            print("This window is closed.")
+        elif user_input == "Escape through window" or user_input == "go through window" and window == 1:
+            print("You fell 2 stories")
+            print("You died.")
+            break
+        
+        if user_input == "Look through window" or user_input == "look at window":
+            print("You looked out the window, you had a heartattack from your fear of heights")
+            print("You died.")
+            break
+
+        # Fire extinguisher
+        if user_input == "take fire extinguisher" or user_input == "Take fire extinguisher" and fire_extinguisher == False:
+            print("Taken.")
+        elif user_input == "take fire extinguisher" or user_input == "Take fire extinguisher" and fire_extinguisher in inv:
+            print("You already took the fire extinguisher")
+
+        if user_input == "Examine fire extinguisher" or user_input == "examine fire extinguisher" and key not in inv:
+           print("A key taped under the fire extinguisher is revealed")
+
+        if user_input == "Use fire extingguisher" or user_input == "Use fire extingguisher" and fire_extinguisher in inv and heating_coils == True:
+            print("The fire extinguisher only cools you down for a bit, but does not stop the oven from continuing to warm up.")
+        elif user_input == "Use fire extingguisher" or user_input == "Use fire extingguisher" and fire_extinguisher in inv and heating_coils == False:
+            print("You were coated with white powder")
+        elif user_input == "Use fire extingguisher" or user_input == "Use fire extingguisher" and fire_extinguisher not in inv:
+            print("You do not have a fire extinguisher")
+
+        if user_input == "drop fire extinguisher" and 'fire_extinguisher' in inv:
+            inv.remove("fire_extinguisher")
+            print("Dropped.")
+        elif user_input == "drop fire extinguisher" and 'fire_extinguisher' not in inv:
+            print("You do not have a fire extinguisher.")
+
+        # Key
+        if user_input == "Take key" or user_input == "take key":
+           print("Taken.")
+           inv.append("key")
+        elif user_input == "Examine fire extinguisher" or user_input == "examine fire extinguisher" and key in inv:
+           print("There was a key here")
 
     ## Location == 3, South
+    # Door handle
+    if location == 3:
+        if user_input == "open door":
+            if door_handle == False: 
+                print("The handle breaks off and reveals an oven dial.")
+                door_handle += 1
+            elif door_handle == 1: 
+                print("The oven dial beeps.")
+        
+        # Oven dial
+        if user_input == "turn oven dial" or user_input == "turn dial":
+            print("How many degrees?")
+            ovendial += 1
+
+        # Heating coils    
+        if user_input == "451" or user_input == "fahrenheit 451" and ovendial == 1:
+            print("Turning the oven dial to 451 activated heating coils in the room, turning it into a giant oven, you are heating up, and have limited moves")
+            heating_coils = True
+        
+        if user_input == "Hit the oven dial" or user_input == "Hit oven dial" or user_input == "Hit dial" or user_input == "hit the oven dial" or user_input == "hit oven dial" or user_input == "hit dial":
+            print("The oven dial beeps")
 
     ## Location == 4, West
 
