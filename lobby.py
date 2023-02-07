@@ -142,7 +142,7 @@ while True: # while is running:
     ## Location == 2, East 
     if location == 2:
         # Window
-        if user_input == "Break window" or user_input == "Hit window" or user_input == "break window" and window == 0:
+        if user_input == "Break window" or user_input == "Hit window" or user_input == "break window" or user_input == "Kick window" and window == 0:
             print("You broke the window")
             window += 1
         elif user_input == "Break window" or user_input == "Hit window" or user_input == "break window" and window == 1:
@@ -165,20 +165,21 @@ while True: # while is running:
             print("You died.")
             break
 
-        # Fire extinguisher
-        if user_input == "take fire extinguisher" or user_input == "Take fire extinguisher" and fire_extinguisher == False:
+        # Fire extinguisher - cannot be picked up.
+        if user_input == "take fire extinguisher" or user_input == "Take fire extinguisher" or user_input == "Take fe" or user_input == "take fe" and fire_extinguisher not in inv:
             print("Taken.")
-        elif user_input == "take fire extinguisher" or user_input == "Take fire extinguisher" and fire_extinguisher in inv:
+            inv.append("fire extinguisher")
+        elif user_input == "take fire extinguisher" or user_input == "Take fire extinguisher" or user_input == "Take fe" or user_input == "take fe" and fire_extinguisher in inv:
             print("You already took the fire extinguisher")
 
-        if user_input == "Examine fire extinguisher" or user_input == "examine fire extinguisher" and key not in inv:
+        if user_input == "Examine fire extinguisher" or user_input == "examine fire extinguisher" or user_input == "Examine fe" or user_input == "examine fe" and key not in inv:
            print("A key taped under the fire extinguisher is revealed")
 
-        if user_input == "Use fire extingguisher" or user_input == "Use fire extingguisher" and fire_extinguisher in inv and heating_coils == True:
+        if user_input == "Use fire extinguisher" or user_input == "use fire extinguisher" or user_input == "Use fe" or user_input == "use fe" and fire_extinguisher in inv and heating_coils == True:
             print("The fire extinguisher only cools you down for a bit, but does not stop the oven from continuing to warm up.")
-        elif user_input == "Use fire extingguisher" or user_input == "Use fire extingguisher" and fire_extinguisher in inv and heating_coils == False:
+        elif user_input == "Use fire extinguisher" or user_input == "use fire extinguisher" and fire_extinguisher in inv and heating_coils == False:
             print("You were coated with white powder")
-        elif user_input == "Use fire extingguisher" or user_input == "Use fire extingguisher" and fire_extinguisher not in inv:
+        elif user_input == "Use fire extinguisher" or user_input == "use fire extinguisher" and fire_extinguisher not in inv:
             print("You do not have a fire extinguisher")
 
         if user_input == "drop fire extinguisher" and 'fire_extinguisher' in inv:
