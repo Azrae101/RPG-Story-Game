@@ -125,13 +125,24 @@ while True: # while is running:
     if user_input == "q" or user_input == "quit" or user_input == "exit" or user_input == "quit game" or user_input == "exit game":
         exit()
 
+
+
     ### Objects:
 
+    ## Location == 0, Middle: 
     # Leaflet 
     if user_input == "take leaflet":
         if location == 0 and 'leaflet' not in inv:
             print("Taken.")
             inv.append("leaflet")
+
+    ## Location == 1, North
+
+    ## Location == 2, East 
+
+    ## Location == 3, South
+
+    ## Location == 4, West
 
     # Other commands
     if user_input == " ": # none
