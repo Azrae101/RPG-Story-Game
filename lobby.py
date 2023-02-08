@@ -1,6 +1,9 @@
 # Lobby #
 import random
 
+# To-do:
+# .lower instead of different cases user_input
+
 ### Definitions:
 room = 1
 location = 0
@@ -18,6 +21,7 @@ secretary_door = False
 ovendial = False
 window = 0
 key = 0
+door = 0
 
 # Lists
 inv = []
@@ -95,10 +99,12 @@ while True: # while is running:
                 print("The handle is missing, an oven dial appears instead.")
 
             # West
-            elif location == 4 and secretary_door == False:
+            elif location == 4 and door == 0:
                 print("You are standing in front of the secretary's door, this is locked.")
-            elif location == 4:
+                print("There is a window")
+            elif location == 4 and door == 1:
                 print("You are standing in front of the secretary's door, it is open.")
+                print("There is a window")
     
     # Locations (Directions)
     if user_input == "m" or user_input == "middle" or user_input == "mid":
@@ -261,7 +267,7 @@ while True: # while is running:
         if user_input == "Look through window" or user_input == "look at window":
             print("You looked out the window, you had a heartattack from your fear of heights")
             print("You died.")
-            break
+            break # or exit()
 
         # Fire extinguisher - cannot be picked up.
         if user_input == "take fire extinguisher" or user_input == "Take fire extinguisher" or user_input == "Take fe" or user_input == "take fe" and fire_extinguisher not in inv:
@@ -275,23 +281,35 @@ while True: # while is running:
 
         if user_input == "Use fire extinguisher" or user_input == "use fire extinguisher" or user_input == "Use fe" or user_input == "use fe" and fire_extinguisher in inv and heating_coils == True:
             print("The fire extinguisher only cools you down for a bit, but does not stop the oven from continuing to warm up.")
+            health += 10
         elif user_input == "Use fire extinguisher" or user_input == "use fire extinguisher" and fire_extinguisher in inv and heating_coils == False:
             print("You were coated with white powder")
+            health -= 10
         elif user_input == "Use fire extinguisher" or user_input == "use fire extinguisher" and fire_extinguisher not in inv:
             print("You do not have a fire extinguisher")
 
-        if user_input == "drop fire extinguisher" and 'fire_extinguisher' in inv:
-            inv.remove("fire_extinguisher")
-            print("Dropped.")
-        elif user_input == "drop fire extinguisher" and 'fire_extinguisher' not in inv:
-            print("You do not have a fire extinguisher.")
+    # Drop fire extinguisher
+    if user_input == "drop fire extinguisher" and 'fire extinguisher' in inv:
+        inv.remove("fire extinguisher")
+        print("Dropped.")
+    elif user_input == "drop fire extinguisher" and 'fire extinguisher' not in inv:
+        print("You do not have a fire extinguisher.")
 
-        # Key
-        if user_input == "Take key" or user_input == "take key":
-           print("Taken.")
-           inv.append("key")
-        elif user_input == "Examine fire extinguisher" or user_input == "examine fire extinguisher" and key in inv:
-           print("There was a key here")
+    # Take key
+    if user_input == "Take key" and location == 2 or user_input == "take key" and location == 2:
+        print("Taken.")
+        inv.append("key")
+    elif user_input == "take key" and location != 2:
+        print("There is no key here")
+    elif user_input == "Examine fire extinguisher" or user_input == "examine fire extinguisher" and key in inv:
+        print("There was a key here")
+
+    # Drop key
+    if user_input == "drop key" and 'key' in inv:
+        inv.remove("key")
+        print("Dropped.")
+    elif user_input == "drop key" and 'key' not in inv:
+        print("You do not have a key.")
 
     ## Location == 3, South
     # Door handle
@@ -321,6 +339,23 @@ while True: # while is running:
             print("The oven dial beeps")
 
     ## Location == 4, West
+    if location == 4:
+        if user_input == "break door":
+            print("It does not budge")
+        if user_input == "open door" and 'key' not in inv and door == 0:
+            print("The door is locked")
+        if user_input == "open door" and 'key' in inv or user_input == "use key" and 'key' in inv or user_input == "open key with door" and 'key' in inv or user_input == "use the key" and 'key' in inv:
+            print("The door is unlocked")
+            door = 1
+        
+        if user_input == "open window":
+            print("Opening the window is not possible.")
+        
+        # Screwdriver options
+        if user_input == "use screwdriver" and 'screwdriver' in inv:
+            print("This does nothing")
+        if user_input == "use screwdriver" and 'screwdriver' not in inv:
+            print("You are not carrying a screwdriver")
 
     # Other commands
     if user_input == " ": # none
