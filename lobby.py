@@ -256,7 +256,7 @@ while True: # while is running:
         elif user_input == "Escape through window" or user_input == "go through window" and window == 1:
             print("You fell 2 stories")
             print("You died.")
-            break
+            break # or exit()
         
         if user_input == "Look through window" or user_input == "look at window":
             print("You looked out the window, you had a heartattack from your fear of heights")
@@ -307,6 +307,10 @@ while True: # while is running:
         if user_input == "turn oven dial" or user_input == "turn dial":
             print("How many degrees?")
             ovendial += 1
+
+        # Look at Oven dial
+        if user_input == "look at oven dial" or user_input == "examine oven dial" or user_input == "oven dial" or user_input == "examine dial" or user_input == "oven":
+            print("It is a oven dial that operates on fahrenheit degrees")
 
         # Heating coils    
         if user_input == "451" or user_input == "fahrenheit 451" and ovendial == 1:
