@@ -69,10 +69,10 @@ while True: # while is running:
                 print("There is a door in the south direction.")
 
             # North
-            elif location == 1 and book == False or book not in inv:
+            elif location == 1 and 'book' not in inv:
                 print("You are standing in front of a bookshelf.")
                 print("All the books are lined up perfectly except for one book in particular.")
-            elif location == 1 and book in inv: 
+            elif location == 1 and 'book' in inv: 
                 print("You are standing in front of a bookshelf.")
                 print("All the books are lined up perfectly.")
 
@@ -198,21 +198,42 @@ while True: # while is running:
     elif user_input == "pull the book out" and 'book' in inv or user_input == "pull book out" and 'book' in inv:
         print("You are already carrying the book")
 
-    if user_input == "examine book" or user_input == "look at book":
+    # Book is in inventory and the screwdriver is not in inventory
+    if user_input == "examine book" and 'book' in inv and 'screwdriver' not in inv or user_input == "look at book" and 'book' in inv and 'screwdriver' not in inv or user_input == "read book" and 'book' in inv and 'screwdriver' not in inv or user_input == "open book" and 'book' in inv and 'screwdriver' not in inv:
         print("The book is called:”Fahrenheit 451” and contains a screwdriver.")
+    # Book is not in inventory
+    if user_input == "examine book" and 'book' not in inv or user_input == "look at book" and 'book' not in inv or user_input == "read book" and 'book' not in inv or user_input == "open book" and 'book' not in inv:
+        print("You are not carrying a book")
+    # Book is in inventory and the screwdriver is in inventory
+    if user_input == "examine book" and 'book' in inv and 'screwdriver' in inv or user_input == "open book" and 'book' in inv and 'screwdriver' in inv or user_input == "read book" and 'book' in inv and 'screwdriver' in inv or user_input == "open book"  and 'book' in inv and 'screwdriver' in inv:
+        print("The book is called:”Fahrenheit 451” and is empty")
     
-    if user_input == "open book" and book in inv or user_input == "read book" and book in inv:
-        print("The book contains a screwdriver.")
-    
-    # Screwdriver # Doesn't work yet
+    # Screwdriver
     if user_input == "take screwdriver" or user_input == "pick up screwdriver":
-        if location == 1 and 'screwdriver' not in inv:
+        if location == 1 and 'screwdriver' not in inv and 'book' in inv:
             print("Taken.")
             inv.append("screwdriver")
-        elif 'screwdriver' not in inv:
+        elif 'screwdriver' not in inv or 'book' not in inv:
             print("You are not near any screwdriver")
         elif 'screwdriver' in inv:
             print("You are already carrying a screwdriver")
+    # Examine screwdriver
+    if user_input == "look at screwdriver" and 'screwdriver' in inv or user_input == "screwdriver" and 'screwdriver' in inv or user_input == "view screwdriver" and 'screwdriver' in inv or user_input == "examine screwdriver" and 'screwdriver' in inv:
+        print("It is a normal screwdriver")
+
+    # Drop book
+    if user_input == "drop book" and 'book' in inv:
+            inv.remove("book")
+            print("Dropped.")
+    elif user_input == "drop book" and 'book' not in inv: 
+        print("You are not carrying a book")
+
+    # Drop screwdriver
+    if user_input == "drop screwdriver" and 'screwdriver' in inv:
+            inv.remove("screwdriver")
+            print("Dropped.")
+    elif user_input == "drop screwdriver" and 'screwdriver' not in inv: 
+        print("You are not carrying a screwdriver")
 
     ## Location == 2, East 
 
