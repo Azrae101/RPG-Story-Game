@@ -2,7 +2,8 @@
 import random
 
 # To-do:
-# lower() instead of different cases user_input
+# user_input.lower() instead of different cases user_input
+# Rearrange so Secretary's office can be implemented, whilst ob
 
 ### Definitions:
 room = 1
@@ -48,7 +49,7 @@ while True: # while is running:
     user_input = input(" ")
 
     # Hints
-    if room == 1 and door_handle == False and heating_coils == False and user_input == "h" or user_input == "H" or user_input == "hint":
+    if room == 1 and door_handle == False and heating_coils == False and user_input.lower() == "h" or user_input == "hint":
         print("Try to examine the door to the south")
 
     # Inventory 
