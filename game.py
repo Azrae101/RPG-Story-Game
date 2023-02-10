@@ -11,7 +11,7 @@ import random
 room = 1
 location = 0
 health = 100
-
+on_table = 0
 
 # Objects
 leaflet = False
@@ -56,11 +56,9 @@ while True: # while is running:
    
     user_input = input(" ")
 
-
     # Hints
     if room == 1 and door_handle == False and heating_coils == False and user_input.lower().lower() == "h" or user_input.lower() == "hint":
         print("Try to examine the door to the south")
-
 
     # Inventory
     if user_input.lower() == "i" or user_input.lower() == "inv" or user_input.lower() == "inventory":
@@ -71,7 +69,6 @@ while True: # while is running:
        
         if len(inv) == 0: # If the list is empty
             print("You are not carrying anything")
-
 
     # look
     if user_input.lower() == "look" or user_input.lower() == "Look" or user_input.lower() == "l":
@@ -86,7 +83,6 @@ while True: # while is running:
                 print("You are standing in a lobby.")
                 print("There is a door in the south direction.")
 
-
             # North
             elif location == 1 and 'book' not in inv:
                 print("You are standing in front of a bookshelf.")
@@ -95,14 +91,12 @@ while True: # while is running:
                 print("You are standing in front of a bookshelf.")
                 print("All the books are lined up perfectly.")
 
-
             # East
             elif location == 2 and fire_extinguisher == False or fire_extinguisher in inv:
                 print("You are standing in front of a fire extinguisher.")
             elif location == 2:
                 print("You are standing in front of a window.")
                 print("The fire extinguisher was here.")
-
 
             # South
             elif location == 3 and door_handle == False:
@@ -112,7 +106,6 @@ while True: # while is running:
             elif location == 3:
                 print("You are standing in front of a door.")
                 print("The handle is missing, an oven dial appears instead.")
-
 
             # West
             elif location == 4 and door == 0:
@@ -137,7 +130,7 @@ while True: # while is running:
         location = 2
         print("You are standing in front of a window.")
     # South:
-    if user_input.lower() == "s" or user_input.lower() == "south":
+    if user_input.lower() == "s" or user_input.lower() == "south" or user_input.lower() == "go to door" and location == 0:
         location = 3
         print("You are standing in front of a door.")
     # West:
@@ -145,23 +138,58 @@ while True: # while is running:
         location = 4
         print("You are standing in front of the secretary's door.")
 
-
     # Quit
     if user_input.lower() == "q" or user_input.lower() == "quit" or user_input.lower() == "exit" or user_input.lower() == "quit game" or user_input.lower() == "exit game":
         exit()
 
-
-    ### Objects:
-
-
     ## Location == 0, Middle:
+    
+    # General commands in this location:
+    if location == 0 and room == 1:
+        if user_input.lower() == "look at table" or user_input.lower() == "look at the table" or user_input.lower() == "look at coffee table" or user_input.lower() == "look at the coffee table" or user_input.lower() == "examine table" or user_input.lower() == "examine the table" or user_input.lower() == "examine the coffee table" :
+            print("There is a leaflet on the coffee table")
+        if user_input.lower() == "go to table":
+            print("You are standing beside the oval coffee table made out of mahogany wood")
+            print("There is a leaflet on the coffee table")
+        if user_input.lower() == "leave lobby" or user_input.lower() == "go out of lobby" or user_input.lower() == "escape the mansion" or user_input.lower() == "escape the lobby" or user_input.lower() == "escape" or user_input.lower() == "escape the mystery mansion" or user_input.lower() == "escape lobby":
+            print("You cannot leave the lobby from here")
+            print("There is an exit via the door in the south direction")
+        if user_input.lower() == "what is kroz" or user_input.lower() == "kroz" or user_input.lower() == "zork":
+            print("You will know, if you read the leaflet on the coffee table")
+        if user_input.lower() == "i dont know" or user_input.lower() == "idk" or user_input.lower() == "i do not know" or user_input.lower() == "what to do" or user_input.lower() == "help" or user_input.lower() == "manual":
+            print("If you don't know where to begin, you can try the following commands:")
+            print("'look'")
+            print("'take leaflet' and 'read leaflet'")
+            print("'south', 'west', 'east' or 'north'")
+            print("If this doesn't help, you can always ask for a 'hint'")
+        if user_input.lower() == "punch table" or user_input.lower() == "attack table" or user_input.lower() == "kick table" or user_input.lower() == "destroy table" or user_input.lower() == "eat leaflet":
+            print("Why would you do that? You hurt yourself")
+            health -= 10
+        if user_input.lower() == "destroy leaflet":
+            print("You destroyed the leaflet by ripping it apart")
+            leaflet = 2
+        if user_input.lower() == "take table" or user_input.lower() == "grab table":
+            print("You cannot do that.")
+            print("The table is too heavy for you to carry.")
+        if user_input.lower() == "are there any humans here" or user_input.lower() == "is there anyone here" or user_input.lower() == "anyone here":
+            print("No, you are here by yourself. All alone.")
+        if user_input.lower() == "go up on table" and on_table == 0 or user_input.lower() == "jump up on the table"  and on_table == 0 or user_input.lower() == "jump on table" and on_table == 0 or user_input.lower() == "go on table"  and on_table == 0 or user_input.lower() == "walk on table"  and on_table == 0:
+            print("You feel like the king of the world...")
+            print("...or at least this tiny lonesome lobby...")
+            print("...It's actually a bit scary to be standing here...")
+            print("...You feel the anxiety and fear kick in from being so high up...")
+            print("You fainted, because you are scared of heights")
+            exit()
+
     # Leaflet
     if user_input.lower() == "take leaflet":
-        if location == 0 and 'leaflet' not in inv:
+        if location == 0 and 'leaflet' not in inv and leaflet != 2:
             print("Taken.")
             inv.append("leaflet")
-        elif 'leaflet' not in inv:
+        elif 'leaflet' not in inv and leaflet != 2:
             print("You are not near any leaflet")
+        elif 'leaflet' not in inv and leaflet == 2:
+            print("The leaflet is destroyed, so you cannot pick it up")
         else:
             print("You are already carrying a leaflet")
 
@@ -329,12 +357,12 @@ while True: # while is running:
 
 
     # Take key
-    if user_input.lower() == "Take key" and location == 2 or user_input.lower() == "take key" and location == 2:
+    if user_input.lower() == "take key" and location == 2:
         print("Taken.")
         inv.append("key")
     elif user_input.lower() == "take key" and location != 2:
         print("There is no key here")
-    elif user_input.lower() == "Examine fire extinguisher" or user_input.lower() == "examine fire extinguisher" and key in inv:
+    elif user_input.lower() == "examine fire extinguisher" and key in inv:
         print("There was a key here")
 
 
@@ -443,8 +471,5 @@ while True: # while is running:
 
 ############################################################################################
 
-
 ### Secretary's office ###
-
-
 
