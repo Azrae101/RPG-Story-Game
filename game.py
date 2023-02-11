@@ -88,71 +88,73 @@ while True: # while is running:
     if room == 1:
         # look
         if user_input.lower() == "look" or user_input.lower() == "look around" or user_input.lower() == "l" or user_input.lower() == "view room":
-            if room == 1: # lobby
-                # Location: middle [0]
-                if location == 0 and leaflet == False or leaflet in inv:
-                    print("The Lobby")
-                    print("You are standing in a lobby, there is a leaflet on the coffee table.")
-                    print("There is a door in the south direction.")
-                elif location == 0:
-                    print("The Lobby")
-                    print("You are standing in a lobby.")
-                    print("There is a door in the south direction.")
+            # Location: middle [0]
+            if location == 0 and leaflet == False or leaflet in inv:
+                print("The Lobby")
+                print("You are standing in a lobby, there is a leaflet on the coffee table.")
+                print("There is a door in the south direction.")
+            elif location == 0:
+                print("The Lobby")
+                print("You are standing in a lobby.")
+                print("There is a door in the south direction.")
 
-                # North
-                elif location == 1 and 'book' not in inv:
-                    print("You are standing in front of a bookshelf.")
-                    print("All the books are lined up perfectly except for one book in particular.")
-                elif location == 1 and 'book' in inv:
-                    print("You are standing in front of a bookshelf.")
-                    print("All the books are lined up perfectly.")
+            # North
+            elif location == 1 and 'book' not in inv:
+                print("You are standing in front of a bookshelf.")
+                print("All the books are lined up perfectly except for one book in particular.")
+            elif location == 1 and 'book' in inv:
+                print("You are standing in front of a bookshelf.")
+                print("All the books are lined up perfectly.")
 
-                # East
-                elif location == 2 and fire_extinguisher == False or fire_extinguisher in inv:
-                    print("You are standing in front of a fire extinguisher.")
-                elif location == 2:
-                    print("You are standing in front of a window.")
-                    print("The fire extinguisher was here.")
+            # East
+            elif location == 2 and fire_extinguisher == False or fire_extinguisher in inv:
+                print("You are standing in front of a fire extinguisher.")
+            elif location == 2:
+                print("You are standing in front of a window.")
+                print("The fire extinguisher was here.")
 
-                # South
-                elif location == 3 and door_handle == False:
-                    print("You are standing in front of a door.")
-                elif location == 3 and heating_coils == False:
-                    print("You are standing in front of a door, the oven dial flashes red.")
-                elif location == 3:
-                    print("You are standing in front of a door.")
-                    print("The handle is missing, an oven dial appears instead.")
+            # South
+            elif location == 3 and door_handle == False:
+                print("You are standing in front of a door.")
+            elif location == 3 and heating_coils == False:
+                print("You are standing in front of a door, the oven dial flashes red.")
+            elif location == 3:
+                print("You are standing in front of a door.")
+                print("The handle is missing, an oven dial appears instead.")
 
-                # West
-                elif location == 4 and door == 0:
-                    print("You are standing in front of the secretary's door, this is locked.")
-                    print("There is a window")
-                elif location == 4 and door == 1:
-                    print("You are standing in front of the secretary's door, it is open.")
-                    print("There is a window")
+            # West
+            elif location == 4 and door == 0:
+                print("You are standing in front of the secretary's door, this is locked.")
+                print("There is a window")
+            elif location == 4 and door == 1:
+                print("You are standing in front of the secretary's door, it is open.")
+                print("There is a window")
     
         # Locations (Directions)
-        if user_input.lower() == "m" or user_input.lower() == "middle" or user_input.lower() == "mid":
+        if user_input.lower() == "m" or user_input.lower() == "middle" or user_input.lower() == "mid" or user_input.lower() == "go to coffee table" or user_input.lower() == "walk towards coffee table":
             location = 0
             print("The Lobby")
             print("You are standing in a lobby.")
             print("There is a door in the south direction.")
         # North
-        if user_input.lower() == "n" or user_input.lower() == "north" or user_input.lower() == "go north":
+        if user_input.lower() == "n" or user_input.lower() == "north" or user_input.lower() == "go north" or user_input.lower() == "go to bookshelf" or user_input.lower() == "walk towards bookshelf":
             location = 1
             print("You are standing in front of a bookshelf.")
         # East:
-        if user_input.lower() == "e" or user_input.lower() == "east" or user_input.lower() == "go east":
+        if user_input.lower() == "e" or user_input.lower() == "east" or user_input.lower() == "go east" or user_input.lower() == "go to fire extinguisher" or user_input.lower() == "walk towards fire extinguisher":
             location = 2
             print("You are standing in front of a window.")
         # South:
-        if user_input.lower() == "s" or user_input.lower() == "south" or user_input.lower() == "go to door" and location == 0 or user_input.lower() == "go south":
+        if user_input.lower() == "s" or user_input.lower() == "south" or user_input.lower() == "go south" or user_input.lower() == "go to door" or user_input.lower() == "walk towards door":
             location = 3
             print("You are standing in front of a door.")
         # West:
-        if user_input.lower() == "w" or user_input.lower() == "west" or user_input.lower() == "go west":
+        if user_input.lower() == "w" or user_input.lower() == "west" or user_input.lower() == "go west" or user_input.lower() == "go to secretary's door" or user_input.lower() == "walk towards secretary's door":
             location = 4
             print("You are standing in front of the secretary's door.")
+        # Other directions:
+        if user_input.lower() == "go to window" or user_input.lower() == "walk to window" or user_input.lower() == "walk towards window" :
+            print("There are multiple windows")
 
         # Quit
         if user_input.lower() == "q" or user_input.lower() == "quit" or user_input.lower() == "exit" or user_input.lower() == "quit game" or user_input.lower() == "exit game":
@@ -303,7 +305,7 @@ while True: # while is running:
     
         # Screwdriver
         if user_input.lower() == "take screwdriver" or user_input.lower() == "pick up screwdriver":
-            if location == 1 and 'screwdriver' not in inv and 'book' in inv:
+            if location == 1 and 'screwdriver' not in inv and 'book' in inv or 'book' in inv and 'screwdriver' not in inv:
                 print("Taken.")
                 inv.append("screwdriver")
             elif 'screwdriver' not in inv or 'book' not in inv:
@@ -332,16 +334,16 @@ while True: # while is running:
         ## Location == 2, East
         if location == 2:
             # Window
-            if user_input.lower() == "open window":
+            if user_input.lower() == "open window" and 'screwdriver' not in inv:
                 print("Opening the window is not possible")
             
-            if user_input.lower() == "break window" or user_input.lower() == "hit window" or user_input.lower() == "kick window" and window == 0:
+            if user_input.lower() == "break window" and window == 0 or user_input.lower() == "hit window" and window == 0 or user_input.lower() == "kick window" and window == 0 or user_input.lower() == "break window" and window == 0 or user_input.lower() == "open window" and window == 0 and 'screwdriver' in inv or user_input.lower() == "open window with screwdriver" and window == 0 and 'screwdriver' in inv or user_input.lower() == "use screwdriver on window" and window == 0 and 'screwdriver' in inv:
                 print("You broke the window")
-                window += 1
+                window = 1
             elif user_input.lower() == "break window" or user_input.lower() == "hit window":
                 print("The window is already broken")
         
-            if user_input.lower() == "examine window" and window == 0 or user_input.lower() == "inspect window":
+            if user_input.lower() == "examine window" and window == 0 or user_input.lower() == "inspect window" and window == 0:
                 print("Here is a window")
             elif user_input.lower() == "examine window" and window == 1:
                 print("This window is broken")
@@ -353,7 +355,7 @@ while True: # while is running:
                 print("You died.")
                 break # or exit()
         
-            if user_input.lower() == "Look through window" or user_input.lower() == "look at window":
+            if user_input.lower() == "Look through window" or user_input.lower() == "look at window" or user_input.lower() == "look out window" or user_input.lower() == "look out of window" or user_input.lower() == "look out of the window":
                 print("You looked out the window, you had a heartattack from your fear of heights")
                 print("You died.")
                 break # or exit()
@@ -573,6 +575,11 @@ while True: # while is running:
         print("What do you want to kill yourself with?")
     if user_input.lower() == "kill self with book" or user_input.lower() == "kill myself with book" or user_input.lower() == "kill self with leaflet" or user_input.lower() == "kill myself with leaflet":
         print("You cannot do that")
+    
+    if user_input.lower() == "punch self" or user_input.lower() == "hurt self" or user_input.lower() == "kick self":
+        print("Why would you do that?")
+        print("You hurt yourself.")
+        health -= 10
 
     # Health
     if health < 0:
