@@ -185,7 +185,8 @@ while True: # while is running:
                 print("'middle','south', 'west', 'east' or 'north'")
                 print("If this doesn't help, you can always ask for a 'hint'")
             if user_input.lower() == "punch table" or user_input.lower() == "attack table" or user_input.lower() == "kick table" or user_input.lower() == "destroy table" or user_input.lower() == "eat leaflet":
-                print("Why would you do that? You hurt yourself")
+                print("Why would you do that?")
+                print("You hurt yourself")
                 health -= 10
             if user_input.lower() == "destroy leaflet":
                 print("You destroyed the leaflet by ripping it apart")
