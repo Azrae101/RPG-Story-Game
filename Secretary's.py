@@ -1,17 +1,17 @@
-# Lobby #
+# Secretary's #
 import random
 
 # To-do:
 # .lower instead of different cases user_input
 
 ### Definitions:
-room = 1
+room = 2
 location = 0
 health = 100
 
 # Objects
-leaflet = False
-leaflet_read = 0
+paper = False
+paper_read = 0
 
 book = False
 fire_extinguisher = False
@@ -22,6 +22,10 @@ ovendial = False
 window = 0
 key = 0
 door = 0
+mannequin = False
+container = False
+glass = False
+rat = False
 
 # Lists
 inv = []
@@ -47,88 +51,87 @@ while True: # while is running:
     
     user_input = input(" ")
 
-    if room == 1:
-        # Hints
-        if room == 1 and door_handle == False and heating_coils == False and user_input == "h" or user_input == "H" or user_input == "hint":
-            print("Try to examine the door to the south")
+    # Hints
+    if room == 1 and door_handle == False and heating_coils == False and user_input == "h" or user_input == "H" or user_input == "hint":
+        print("Try to examine the door to the south")
 
-        # Inventory 
-        if user_input == "i" or user_input == "inv" or user_input == "inventory":
-            if len(inv) > 0: # If there is something in the list
-                print("You are carrying:")
-                for i in range (len(inv)):
-                    print(inv[i])
-            
-            if len(inv) == 0: # If the list is empty
-                print("You are not carrying anything")
-
-        # look
-        if user_input == "look" or user_input == "Look" or user_input == "l":
-            if room == 1: # lobby
-                # Location: middle [0]
-                if location == 0 and leaflet == False or leaflet in inv:
-                    print("The Lobby")
-                    print("You are standing in a lobby, there is a leaflet on the coffee table.")
-                    print("There is a door in the south direction.")
-                elif location == 0:
-                    print("The Lobby")
-                    print("You are standing in a lobby.")
-                    print("There is a door in the south direction.")
-
-                # North
-                elif location == 1 and 'book' not in inv:
-                    print("You are standing in front of a bookshelf.")
-                    print("All the books are lined up perfectly except for one book in particular.")
-                elif location == 1 and 'book' in inv: 
-                    print("You are standing in front of a bookshelf.")
-                    print("All the books are lined up perfectly.")
-
-                # East
-                elif location == 2 and fire_extinguisher == False or fire_extinguisher in inv:
-                    print("You are standing in front of a fire extinguisher.")
-                elif location == 2:
-                    print("You are standing in front of a window.")
-                    print("The fire extinguisher was here.")
-
-                # South
-                elif location == 3 and door_handle == False:
-                    print("You are standing in front of a door.")
-                elif location == 3 and heating_coils == False:
-                    print("You are standing in front of a door, the oven dial flashes red.")
-                elif location == 3:
-                    print("You are standing in front of a door.")
-                    print("The handle is missing, an oven dial appears instead.")
-
-                # West
-                elif location == 4 and door == 0:
-                    print("You are standing in front of the secretary's door, this is locked.")
-                    print("There is a window")
-                elif location == 4 and door == 1:
-                    print("You are standing in front of the secretary's door, it is open.")
-                    print("There is a window")
+    # Inventory 
+    if user_input == "i" or user_input == "inv" or user_input == "inventory":
+        if len(inv) > 0: # If there is something in the list
+            print("You are carrying:")
+            for i in range (len(inv)):
+                print(inv[i])
         
-        # Locations (Directions)
-        if user_input == "m" or user_input == "middle" or user_input == "mid":
-            location = 0
-            print("The Lobby")
-            print("You are standing in a lobby.")
-            print("There is a door in the south direction.")
-        # North
-        if user_input == "n" or user_input == "north":
-            location = 1
-            print("You are standing in front of a bookshelf.")
-        # East:
-        if user_input == "e" or user_input == "east":
-            location = 2
-            print("You are standing in front of a window.")
-        # South:
-        if user_input == "s" or user_input == "south":
-            location = 3
-            print("You are standing in front of a door.")
-        # West:
-        if user_input == "w" or user_input == "west":
-            location = 4
-            print("You are standing in front of the secretary's door.")
+        if len(inv) == 0: # If the list is empty
+            print("You are not carrying anything")
+
+    # look
+    if user_input == "look" or user_input == "Look" or user_input == "l":
+        if room == 1: # lobby
+            # Location: middle [0]
+            if location == 0 and leaflet == False or leaflet in inv:
+                print("The Lobby")
+                print("You are standing in a lobby, there is a leaflet on the coffee table.")
+                print("There is a door in the south direction.")
+            elif location == 0:
+                print("The Lobby")
+                print("You are standing in a lobby.")
+                print("There is a door in the south direction.")
+
+            # North
+            elif location == 1 and 'book' not in inv:
+                print("You are standing in front of a bookshelf.")
+                print("All the books are lined up perfectly except for one book in particular.")
+            elif location == 1 and 'book' in inv: 
+                print("You are standing in front of a bookshelf.")
+                print("All the books are lined up perfectly.")
+
+            # East
+            elif location == 2 and fire_extinguisher == False or fire_extinguisher in inv:
+                print("You are standing in front of a fire extinguisher.")
+            elif location == 2:
+                print("You are standing in front of a window.")
+                print("The fire extinguisher was here.")
+
+            # South
+            elif location == 3 and door_handle == False:
+                print("You are standing in front of a door.")
+            elif location == 3 and heating_coils == False:
+                print("You are standing in front of a door, the oven dial flashes red.")
+            elif location == 3:
+                print("You are standing in front of a door.")
+                print("The handle is missing, an oven dial appears instead.")
+
+            # West
+            elif location == 4 and door == 0:
+                print("You are standing in front of the secretary's door, this is locked.")
+                print("There is a window")
+            elif location == 4 and door == 1:
+                print("You are standing in front of the secretary's door, it is open.")
+                print("There is a window")
+    
+    # Locations (Directions)
+    if user_input == "m" or user_input == "middle" or user_input == "mid":
+        location = 0
+        print("The Lobby")
+        print("You are standing in a lobby.")
+        print("There is a door in the south direction.")
+    # North
+    if user_input == "n" or user_input == "north":
+        location = 1
+        print("You are standing in front of a bookshelf.")
+    # East:
+    if user_input == "e" or user_input == "east":
+        location = 2
+        print("You are standing in front of a window.")
+    # South:
+    if user_input == "s" or user_input == "south":
+        location = 3
+        print("You are standing in front of a door.")
+    # West:
+    if user_input == "w" or user_input == "west":
+        location = 4
+        print("You are standing in front of the secretary's door.")
 
     # Quit
     if user_input == "q" or user_input == "quit" or user_input == "exit" or user_input == "quit game" or user_input == "exit game":
