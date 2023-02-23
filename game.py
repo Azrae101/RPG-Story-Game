@@ -417,7 +417,7 @@ while True: # while is running:
                 print("You died.")
                 break # or exit()
         
-            if user_input.lower() == "see through window" or user_input.lower() == "look at window" or user_input.lower() == "look out window" or user_input.lower() == "look out of window" or user_input.lower() == "look out of the window":
+            if user_input.lower() == "see through window" or user_input.lower() == "look at window" or user_input.lower() == "look out window" or user_input.lower() == "look out of window" or user_input.lower() == "look out of the window" or user_input.lower() == "look out of window" or user_input.lower() == "look through window":
                 print("You looked out the window, you had a heartattack from your fear of heights")
                 print("You died.")
                 break # or exit()
@@ -562,7 +562,7 @@ while True: # while is running:
             if user_input.lower() == "open window" or user_input.lower() == "escape through window" or user_input.lower() == "jump through window" or user_input.lower() == "jump out of the window":
                 print("Opening the window is not possible.")
 
-            if user_input.lower() == "look out of window" or user_input.lower() == "look at window" or user_input.lower() == "go to window" or user_input.lower() == "examine window" or user_input.lower() == "look at window" or user_input.lower() == "go to window" or user_input.lower() == "examine window"  or user_input.lower() == "view window" or user_input.lower() == "inspect window":
+            if user_input.lower() == "look out of window" or user_input.lower() == "look at window" or user_input.lower() == "go to window" or user_input.lower() == "examine window" or user_input.lower() == "look through window" or user_input.lower() == "go to window" or user_input.lower() == "examine window"  or user_input.lower() == "view window" or user_input.lower() == "inspect window":
                 print("You looked out the window, you had a heartattack from your fear of heights")
                 print("You died.")
                 break # or exit()
