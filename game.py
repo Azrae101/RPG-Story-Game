@@ -583,6 +583,10 @@ while True: # while is running:
 
 ############################################################################################
 ### Secretary's office ###
+
+    # Variables
+    mirror = 0
+
     if room == 2:
         if user_input == "hej":
             continue
@@ -593,7 +597,8 @@ while True: # while is running:
             print("The guilt makes your stomach turn and twist")
             print("You got hurt by the trauma and guilt")
             health -= 10
-        if user_input.lower() == "something, learn about yourself":
+            mirror = 1
+        if user_input.lower() == "who am i" and mirror == 1:
             print("You are a retired pilot, who caused a tragic plane accident, killing all passengers in the plane, except yourself.")
             print("Since the accident, you have been retired, scared of heights and flight and in insane insurance dept.")
             print("You were promised a $10,000 prize, if able to escape an escape room called The Mystery Mansion.")
