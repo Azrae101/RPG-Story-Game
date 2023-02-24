@@ -154,7 +154,7 @@ while True: # while is running:
                 print("You are standing in front of a bookshelf.")
                 print("All the books are lined up perfectly.")
         # East:
-        if user_input.lower() == "e" or user_input.lower() == "east" or user_input.lower() == "go east" or user_input.lower() == "go to fire extinguisher" or user_input.lower() == "walk towards fire extinguisher":
+        if user_input.lower() == "e" or user_input.lower() == "east" or user_input.lower() == "go east" or user_input.lower() == "go to fire extinguisher" or user_input.lower() == "walk towards fire extinguisher" or user_input.lower() == "go e":
             location = 2
             if location == 2 and 'fire extinguisher' not in inv:
                 print("You are standing in front of a window.")
@@ -163,7 +163,7 @@ while True: # while is running:
                 print("You are standing in front of a window.")
                 print("The fire extinguisher was here.")
         # South:
-        if user_input.lower() == "s" or user_input.lower() == "south" or user_input.lower() == "go south" or user_input.lower() == "go to door" or user_input.lower() == "walk towards door":
+        if user_input.lower() == "s" or user_input.lower() == "south" or user_input.lower() == "go south" or user_input.lower() == "go to door" or user_input.lower() == "walk towards door" or user_input.lower() == "go s":
             location = 3
             if location == 3 and door_handle == False:
                 print("You are standing in front of a door.")
@@ -173,7 +173,7 @@ while True: # while is running:
                 print("You are standing in front of a door.")
                 print("The handle is missing, an oven dial appears instead.")
         # West:
-        if user_input.lower() == "w" or user_input.lower() == "west" or user_input.lower() == "go west" or user_input.lower() == "go to secretary's door" or user_input.lower() == "walk towards secretary's door":
+        if user_input.lower() == "w" or user_input.lower() == "west" or user_input.lower() == "go west" or user_input.lower() == "go to secretary's door" or user_input.lower() == "walk towards secretary's door" or user_input.lower() == "go w":
             location = 4
             if location == 4 and door == 0:
                 print("You are standing in front of the secretary's door, this is locked.")
@@ -182,7 +182,7 @@ while True: # while is running:
                 print("You are standing in front of the secretary's door, it is open.")
                 print("There is a window")
         # Middle:
-        if user_input.lower() == "m" or user_input.lower() == "middle" or user_input.lower() == "mid" or user_input.lower() == "go to coffee table" or user_input.lower() == "walk towards coffee table":
+        if user_input.lower() == "m" or user_input.lower() == "middle" or user_input.lower() == "mid" or user_input.lower() == "go to coffee table" or user_input.lower() == "walk towards coffee table" or user_input.lower() == "go to lobby" or user_input.lower() == "go to middle" or user_input.lower() == "go middle" or user_input.lower() == "go m":
             location = 0
             if location == 0 and 'leaflet' not in inv:
                 print("The Lobby")
@@ -219,7 +219,7 @@ while True: # while is running:
                 print("'take leaflet' and 'read leaflet'")
                 print("'middle','south', 'west', 'east' or 'north'")
                 print("If this doesn't help, you can always ask for a 'hint'")
-            if user_input.lower() == "punch table" or user_input.lower() == "attack table" or user_input.lower() == "kick table" or user_input.lower() == "destroy table" or user_input.lower() == "eat leaflet":
+            if user_input.lower() == "punch table" or user_input.lower() == "attack table" or user_input.lower() == "kick table" or user_input.lower() == "destroy table" or user_input.lower() == "eat leaflet" or user_input.lower() == "eat the leaflet" or user_input.lower() == "eat table" or user_input.lower() == "eat the table":
                 print("Why would you do that?")
                 print("You hurt yourself")
                 health -= 10
@@ -248,22 +248,24 @@ while True: # while is running:
                 print("You are a bit tired and just sitting in this sofa again made you fell asleep")
                 print("You never woke up again for unknown reasons.")
                 exit()
-            elif user_input.lower() == "look at paintings" or user_input.lower() == "look at painting" or user_input.lower() == "look at portraits" or user_input.lower() == "look at portrait":
+        if user_input.lower() == "who am i" or user_input.lower() == "me":
+                print("You are a retired pilot")
+
+        # Paintings
+        if user_input.lower() == "look at paintings" or user_input.lower() == "look at painting" or user_input.lower() == "look at portraits" or user_input.lower() == "look at portrait":
                 print("It feels like the old paintings and portraits are looking at you, and are following your every step.")
                 print("You better watch your back")
-            elif user_input.lower() == "destroy paintings" or user_input.lower() == "destroy painting" or user_input.lower() == "destroy portraits" or user_input.lower() == "destroy portrait":
-                if destroyed_paintings == 0:
-                    destroyed_paintings = 1
-                    print("You ruined the old and creepy paintings and portraits")
-                    print("You have got a bad omen now")
-                    print("The evil spirits hurt you")
-                    health -= 10
-                elif destroyed_paintings == 0:
-                    print("You have already destroyed all of the paintings and portraits")
-                    print("The evil spirits hurt you again")
-                    health -= 10
-            if user_input.lower() == "who am i" or user_input.lower() == "me":
-                print("You are a retired pilot")
+        if user_input.lower() == "destroy paintings" or user_input.lower() == "destroy painting" or user_input.lower() == "destroy portraits" or user_input.lower() == "destroy portrait":
+            if destroyed_paintings == 1:
+                print("You have already destroyed all of the paintings and portraits")
+                print("The evil spirits hurt you again")
+                health -= 10
+            if destroyed_paintings == 0:
+                destroyed_paintings = 1
+                print("You ruined the old and creepy paintings and portraits")
+                print("You have got a bad omen now")
+                print("The evil spirits hurt you")
+                health -= 10
 
         # Leaflet
         if user_input.lower() == "take leaflet" or user_input.lower() == "grab the leaflet" or user_input.lower() == "grab leaflet" or user_input.lower() == "take the leaflet" or user_input.lower() == "pick up the leaflet" or user_input.lower() == "pick up leaflet":
@@ -417,7 +419,7 @@ while True: # while is running:
                 print("You died.")
                 break # or exit()
         
-            if user_input.lower() == "see through window" or user_input.lower() == "look at window" or user_input.lower() == "look out window" or user_input.lower() == "look out of window" or user_input.lower() == "look out of the window":
+            if user_input.lower() == "see through window" or user_input.lower() == "look at window" or user_input.lower() == "look out window" or user_input.lower() == "look out of window" or user_input.lower() == "look out of the window" or user_input.lower() == "look out of window" or user_input.lower() == "look through window":
                 print("You looked out the window, you had a heartattack from your fear of heights")
                 print("You died.")
                 break # or exit()
@@ -426,6 +428,7 @@ while True: # while is running:
             # Fire extinguisher - cannot be picked up.
             if user_input.lower() == "take fire extinguisher" and 'fire extinguisher' not in inv or user_input.lower() == "pick up fire extinguisher" and 'fire extinguisher' not in inv or user_input.lower() == "take fe" and 'fire extinguisher' not in inv or user_input.lower() == "grab fire extinguisher" and 'fire extinguisher' not in inv or user_input.lower() == "gather fire extinguisher" and 'fire extinguisher' not in inv:
                 print("Taken.")
+                print("The fire extinguisher looks funny")
                 inv.append("fire extinguisher")
             elif user_input.lower() == "take fire extinguisher" and 'fire extinguisher' in inv or user_input.lower() == "pick up fire extinguisher" and 'fire extinguisher' in inv or user_input.lower() == "take fe" and 'fire extinguisher' in inv or user_input.lower() == "grab fire extinguisher" and 'fire extinguisher' in inv or user_input.lower() == "gather fire extinguisher" and 'fire extinguisher' in inv:
                 print("You already took the fire extinguisher")
@@ -475,8 +478,11 @@ while True: # while is running:
                     door_handle += 1
                 elif door_handle == 1:
                     print("The oven dial beeps.")
-        
-            if user_input.lower() == "punch door" or user_input.lower() == "attack door" or user_input.lower() == "kick door" or user_input.lower() == "destroy door" or user_input.lower() == "run into door":
+
+            if user_input.lower() == "look at door" or user_input.lower() == "examine door" or user_input.lower() == "view door" or user_input.lower() == "inspect door" or user_input.lower() == "examine door" or user_input.lower() == "enter door" or user_input.lower() == "examine the door":
+                print("This is a door that leads out of the Lobby")
+                print("Maybe this is your escape")
+            if user_input.lower() == "punch door" or user_input.lower() == "attack door" or user_input.lower() == "kick door" or user_input.lower() == "destroy door" or user_input.lower() == "run into door" or user_input.lower() == "beat door" or user_input.lower() == "smash door" or user_input.lower() == "break door":
                 print("Nothing happens")
                 print("You hurt yourself")
                 health -= 10
@@ -562,7 +568,7 @@ while True: # while is running:
             if user_input.lower() == "open window" or user_input.lower() == "escape through window" or user_input.lower() == "jump through window" or user_input.lower() == "jump out of the window":
                 print("Opening the window is not possible.")
 
-            if user_input.lower() == "look out of window" or user_input.lower() == "look at window" or user_input.lower() == "go to window" or user_input.lower() == "examine window" or user_input.lower() == "look at window" or user_input.lower() == "go to window" or user_input.lower() == "examine window"  or user_input.lower() == "view window" or user_input.lower() == "inspect window":
+            if user_input.lower() == "look out of window" or user_input.lower() == "look at window" or user_input.lower() == "go to window" or user_input.lower() == "examine window" or user_input.lower() == "look through window" or user_input.lower() == "go to window" or user_input.lower() == "examine window"  or user_input.lower() == "view window" or user_input.lower() == "inspect window":
                 print("You looked out the window, you had a heartattack from your fear of heights")
                 print("You died.")
                 break # or exit()
@@ -570,13 +576,17 @@ while True: # while is running:
                 print("You cannot break this window")
         
             # Screwdriver options
-        if user_input.lower() == "use screwdriver" and 'screwdriver' in inv:
+        if user_input.lower() == "use screwdriver" and 'screwdriver' in inv or user_input.lower() == "use screwdriver on door" and 'screwdriver' in inv:
             print("This does nothing")
         if user_input.lower() == "use screwdriver" and 'screwdriver' not in inv:
             print("You are not carrying a screwdriver")
 
 ############################################################################################
 ### Secretary's office ###
+
+    # Variables
+    mirror = 0
+
     if room == 2:
         if user_input == "hej":
             continue
@@ -587,7 +597,8 @@ while True: # while is running:
             print("The guilt makes your stomach turn and twist")
             print("You got hurt by the trauma and guilt")
             health -= 10
-        if user_input.lower() == "something, learn about yourself":
+            mirror = 1
+        if user_input.lower() == "who am i" and mirror == 1:
             print("You are a retired pilot, who caused a tragic plane accident, killing all passengers in the plane, except yourself.")
             print("Since the accident, you have been retired, scared of heights and flight and in insane insurance dept.")
             print("You were promised a $10,000 prize, if able to escape an escape room called The Mystery Mansion.")
@@ -652,7 +663,7 @@ while True: # while is running:
     if user_input.lower() == "kill self with book" or user_input.lower() == "kill myself with book" or user_input.lower() == "kill self with leaflet" or user_input.lower() == "kill myself with leaflet":
         print("You cannot do that")
     
-    if user_input.lower() == "punch self" or user_input.lower() == "hurt self" or user_input.lower() == "kick self":
+    if user_input.lower() == "punch self" or user_input.lower() == "hurt self" or user_input.lower() == "kick self" or user_input.lower() == "fist self":
         print("Why would you do that?")
         print("You hurt yourself.")
         health -= 10
