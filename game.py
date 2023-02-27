@@ -16,6 +16,7 @@ warm = 0
 sofa = 0
 look_first = 0
 destroyed_paintings = 0
+mirror = 0
 
 # Objects
 leaflet = False
@@ -177,10 +178,10 @@ while True: # while is running:
             location = 4
             if location == 4 and door == 0:
                 print("You are standing in front of the secretary's door, this is locked.")
-                print("There is a window")
+                print("There is a window and a mirror here")
             elif location == 4 and door == 1:
                 print("You are standing in front of the secretary's door, it is open.")
-                print("There is a window")
+                print("There is a window and a mirror here")
         # Middle:
         if user_input.lower() == "m" or user_input.lower() == "middle" or user_input.lower() == "mid" or user_input.lower() == "go to coffee table" or user_input.lower() == "walk towards coffee table" or user_input.lower() == "go to lobby" or user_input.lower() == "go to middle" or user_input.lower() == "go middle" or user_input.lower() == "go m":
             location = 0
@@ -539,6 +540,27 @@ while True: # while is running:
 
         ## Location == 4, West
         if location == 4:
+            print(mirror)
+            if user_input.lower() == "look in mirror" and mirror == 0 or user_input.lower() == "look at self in mirror"  and mirror == 0 or user_input.lower() == "look at mirror" and mirror == 0  or user_input.lower() == "look at the mirror" and mirror == 0 or user_input.lower() == "look in the mirror" and mirror == 0:
+                print("You look yourself in the eyes for the first time in a while")
+                print("You remember what you did...")
+                print("You remember all those people, whose lives you ruined")
+                print("The guilt makes your stomach turn and twist")
+                print("You got hurt by the trauma and guilt")
+                health -= 10
+                mirror += 1
+            elif user_input.lower() == "look in mirror" and mirror <= 1 or user_input.lower() == "look at self in mirror" and mirror == 1 or user_input.lower() == "look at mirror" and mirror == 1 or user_input.lower() == "look at the mirror" and mirror == 1 or user_input.lower() == "look in the mirror" and mirror == 1:
+                print("You are reminded of all those people, whose lives you ruined")
+                print("You got hurt by the trauma and guilt")
+                health -= 10
+            if user_input.lower() == "who am i" and mirror == 1 and leaflet_read:
+                print("You are a retired pilot, who caused a tragic plane accident, killing all passengers in the plane, except yourself.")
+                print("Since the accident, you have been retired, scared of heights and flight and in insane insurance dept.")
+                print("You were promised a $10,000 prize, if able to escape an escape room called The Mystery Mansion.")
+            elif user_input.lower() == "who am i":
+                print("You have supressed your traumatic memories and don't want to think about it")
+                health -= 10
+
             if user_input.lower() == "break door":
                 print("It does not budge")
             if user_input.lower() == "open door" and 'key' not in inv and door == 0 or user_input.lower() == "look at door" and 'key' not in inv and door == 0 or user_input.lower() == "examine door" and 'key' not in inv and door == 0 or user_input.lower() == "view door" and 'key' not in inv and door == 0 or user_input.lower() == "inspect door" and 'key' not in inv and door == 0 or user_input.lower() == "examine door" and 'key' not in inv and door == 0 or user_input.lower() == "enter door" and 'key' not in inv and door == 0:
@@ -590,18 +612,6 @@ while True: # while is running:
     if room == 2:
         if user_input == "hej":
             continue
-        if user_input.lower() == "look in mirror" or user_input.lower() == "look at self in mirror":
-            print("You look yourself in the eyes for the first time in a while")
-            print("You remember what you did...")
-            print("You remember all those people, whose lives you ruined")
-            print("The guilt makes your stomach turn and twist")
-            print("You got hurt by the trauma and guilt")
-            health -= 10
-            mirror = 1
-        if user_input.lower() == "who am i" and mirror == 1:
-            print("You are a retired pilot, who caused a tragic plane accident, killing all passengers in the plane, except yourself.")
-            print("Since the accident, you have been retired, scared of heights and flight and in insane insurance dept.")
-            print("You were promised a $10,000 prize, if able to escape an escape room called The Mystery Mansion.")
 
 ############################################################################################
 ### The Cabin ###
