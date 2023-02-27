@@ -540,7 +540,6 @@ while True: # while is running:
 
         ## Location == 4, West
         if location == 4:
-            print(mirror)
             if user_input.lower() == "look in mirror" and mirror == 0 or user_input.lower() == "look at self in mirror"  and mirror == 0 or user_input.lower() == "look at mirror" and mirror == 0  or user_input.lower() == "look at the mirror" and mirror == 0 or user_input.lower() == "look in the mirror" and mirror == 0:
                 print("You look yourself in the eyes for the first time in a while")
                 print("You remember what you did...")
