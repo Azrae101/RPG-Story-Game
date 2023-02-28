@@ -146,7 +146,7 @@ while True: # while is running:
     
         # Locations (Directions)
         # North
-        if user_input.lower() == "n" or user_input.lower() == "north" or user_input.lower() == "go north" or user_input.lower() == "go to bookshelf" or user_input.lower() == "walk towards bookshelf":
+        if user_input.lower() == "n" or user_input.lower() == "north" or user_input.lower() == "go north" or user_input.lower() == "go n" or user_input.lower() == "go to bookshelf" or user_input.lower() == "walk towards bookshelf":
             location = 1
             if location == 1 and 'book' not in inv:
                 print("You are standing in front of a bookshelf.")
