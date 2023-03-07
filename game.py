@@ -37,7 +37,6 @@ while True: # while is running:
     if room == 1 and door_handle == False and heating_coils == False and user_input == "h" or user_input == "H" or user_input == "hint":
         print("Try to examine the door to the south")
 
-
     # Inventory 
     if user_input == "i" or user_input == "inv" or user_input == "inventory":
         if len(inv) > 0: # If there is something in the list
@@ -46,12 +45,9 @@ while True: # while is running:
         
         if len(inv) == 0: # If the list is empty
             print("You are not carrying anything")
-        if inv:
-            print("You are carrying:")
-            print(inv)
 
     # look
-    if user_input == "look":
+    if user_input == "look" or user_input == "Look" or user_input == "l":
         if room == 1: # lobby
             # Location: middle [0]
             if location == 0 and leaflet == False or leaflet in inv:
@@ -92,18 +88,23 @@ while True: # while is running:
                 print("You are standing in front of the secretary's door, this is locked.")
             elif location == 4:
                 print("You are standing in front of the secretary's door, it is open.")
+    
+    # Locations (Directions)
+    if user_input == "m" or user_input == "middle" or user_input == "mid":
+        location = 0
+    # North
+    if user_input == "n" or user_input == "north":
+        location = 1
+    # East:
+    if user_input == "e" or user_input == "east":
+        location = 2
+    # South:
+    if user_input == "s" or user_input == "south":
+        location = 3
+    # West:
+    if user_input == "w" or user_input == "west":
+        location = 4
 
-    elif 
-    
-    
-    # Inventory # PROBLEM HERE: keeps on printing even though user_input is not correct
-    elif user_input == "i" or "inv" or "inventory":
-        if not inv: 
-            print("You are not carrying anything")
-        elif inv:
-            print("You are carrying:")
-            print(inv)
-    
     # Quit
     elif user_input == "q" or user_input == "quit" or user_input ==  "exit" or user_input ==  "quit game" or user_input ==  "exit game":
         exit()
